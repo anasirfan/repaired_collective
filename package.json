@@ -1,0 +1,7 @@
+{
+  "name": "repaired-collective-site",
+  "private": true,
+  "scripts": {
+    "build": "node scripts/set-site-url.js"
+  }
+}

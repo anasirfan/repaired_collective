@@ -1,8 +1,0 @@
-# Prefer one hostname: redirect www → apex (fixes www / non-www split in SEO audits).
-# Customize host when you add a production custom domain.
-
-[[redirects]]
-  from = "https://www.mobrepair-demo-final.netlify.app/*"
-  to = "https://mobrepair-demo-final.netlify.app/:splat"
-  status = 301
-  force = true
