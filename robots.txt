@@ -1,0 +1,5 @@
+# https://mobrepair-demo-final.netlify.app/
+User-agent: *
+Allow: /
+
+Sitemap: https://mobrepair-demo-final.netlify.app/sitemap.xml

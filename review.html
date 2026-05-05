@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Leave a Review | Repaired Collective</title>
+  <meta name="description"
+    content="Share feedback for Repaired Collective on Google or our short form — help NYC customers find trusted mobile iPhone repair, screen replacement, and same-day technician visits." />
+  <link rel="canonical" href="https://mobrepair-demo-final.netlify.app/review.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Repaired Collective" />
+  <meta property="og:title" content="Leave a Review | Repaired Collective" />
+  <meta property="og:description"
+    content="Rate your NYC mobile repair experience — Repaired Collective values your Google reviews and honest feedback." />
+  <meta property="og:url" content="https://mobrepair-demo-final.netlify.app/review.html" />
+  <meta property="og:image" content="https://mobrepair-demo-final.netlify.app/logomob.png" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:updated_time" content="2026-05-06T12:00:00+00:00" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Leave a Review | Repaired Collective" />
+  <meta name="twitter:description" content="Tell us about your Repaired Collective mobile repair in NYC." />
+  <meta name="twitter:image" content="https://mobrepair-demo-final.netlify.app/logomob.png" />
+  <script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","name":"Leave a Review | Repaired Collective","description":"Share feedback for Repaired Collective mobile device repair — Google reviews and customer form.","url":"https://mobrepair-demo-final.netlify.app/review.html","isPartOf":{"@type":"WebSite","name":"Repaired Collective","url":"https://mobrepair-demo-final.netlify.app/"},"publisher":{"@type":"Organization","name":"Repaired Collective","logo":{"@type":"ImageObject","url":"https://mobrepair-demo-final.netlify.app/logomob.png"},"url":"https://mobrepair-demo-final.netlify.app/"}}
+  </script>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+  <script>
+    tailwind.config = {
+      theme: { extend: {
+        fontFamily: { sans: ['Montserrat', 'sans-serif'], serif: ['Georgia', 'serif'] },
+        colors: { secondary: '#d00000' }
+      }}
+    }
+  </script>
+  <style>
+
+/* === SHARED NAVBAR + FOOTER STYLES === */
+.rc-nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  background: #000;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  box-shadow: 0 2px 14px rgba(0,0,0,.35);
+}
+.rc-nav-inner {
+  max-width: 1280px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 12px;
+  padding: 12px 24px;
+}
+.rc-logo { display: flex; align-items: center; flex-shrink: 0; }
+.rc-logo img {
+  height: auto; width: auto;
+  object-fit: cover;
+  display: block;
+  margin-right: 14px;
+}
+.rc-brand {
+  font-family: Georgia, serif;
+  font-weight: 400;
+  font-size: 16px;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  line-height: 1;
+  white-space: nowrap;
+}
+.rc-menu {
+  display: flex; align-items: center; gap: 28px;
+}
+.rc-menu a {
+  color: #fff;
+  font-family: Montserrat, sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 6px 0;
+  border-bottom: 2px solid transparent;
+  transition: color .25s, border-color .25s;
+  white-space: nowrap;
+}
+.rc-menu a:hover, .rc-menu a.active {
+  color: #ff3b3b;
+  border-bottom-color: #ff3b3b;
+}
+.rc-actions { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+.rc-btn {
+  display: inline-block;
+  background: #d00000;
+  color: #fff;
+  font-family: Montserrat, sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 11px 18px;
+  border-radius: 8px;
+  text-decoration: none;
+  white-space: nowrap;
+  box-shadow: 0 8px 18px rgba(208,0,0,.30);
+  transition: background .25s, transform .15s;
+  border: 0;
+  cursor: pointer;
+}
+.rc-btn:hover { background: #b60000; transform: translateY(-1px); }
+.rc-toggle {
+  display: none;
+  background: #d00000;
+  color: #fff;
+  border: 0;
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-size: 22px;
+  cursor: pointer;
+  line-height: 1;
+}
+.rc-mobile-menu {
+  display: none;
+  background: #000;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  padding: 8px 20px 16px;
+}
+.rc-mobile-menu.open { display: block; }
+.rc-mobile-menu a {
+  display: block;
+  padding: 14px 4px;
+  font-family: Montserrat, sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.rc-mobile-menu a:last-child { border-bottom: none; }
+.rc-mobile-menu a:hover { color: #ff3b3b; }
+.rc-nav-spacer { height: 84px; }
+
+/* Responsive nav */
+@media (max-width: 1100px) {
+  .rc-menu { gap: 18px; }
+  .rc-btn { padding: 10px 14px; font-size: 12px; }
+}
+@media (max-width: 980px) {
+  .rc-menu, .rc-actions .rc-btn { display: none; }
+  .rc-toggle { display: block; }
+  .rc-nav-inner { padding: 10px 18px; }
+  .rc-logo img { height: 44px; width: 44px; margin-right: 10px; }
+  .rc-brand { font-size: 14px; }
+  .rc-nav-spacer { height: 70px; }
+}
+@media (max-width: 480px) {
+  .rc-nav-inner { padding: 10px 14px; }
+  .rc-logo img { height: auto; width: auto; }
+  .rc-brand { font-size: 13px; }
+  .rc-toggle { padding: 6px 10px; font-size: 20px; }
+}
+
+/* === SHARED FOOTER === */
+.rc-footer {
+  background: #000;
+  border-top: 4px solid #d00000;
+  padding: 40px 24px;
+  color: #cbd5e1;
+  font-family: Montserrat, sans-serif;
+}
+.rc-footer-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 28px;
+  flex-wrap: wrap;
+}
+.rc-footer-brand { display: flex; flex-direction: column; gap: 8px; }
+.rc-footer-brand .name {
+  font-family: Montserrat, serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+.rc-footer-brand p {
+  color: #94a3b8;
+  font-size: 13px;
+  line-height: 1.6;
+  margin: 0;
+}
+.rc-socials { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.rc-socials a {
+  width: 40px; height: 40px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 9999px;
+  border: 1px solid #475569;
+  color: #94a3b8;
+  font-size: 16px;
+  text-decoration: none;
+  transition: color .25s, border-color .25s, background .25s;
+}
+.rc-socials a:hover { color: #fff; border-color: #fff; background: rgba(255,255,255,0.05); }
+
+.rc-footer-links {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: center;
+  gap: 12px 20px; max-width: 560px;
+}
+.rc-footer-links a {
+  color: #94a3b8; font-size: 11px; font-weight: 500;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  text-decoration: none; white-space: nowrap; transition: color .2s;
+}
+.rc-footer-links a:hover { color: #fff; }
+
+@media (max-width: 640px) {
+  .rc-footer { padding: 32px 20px; text-align: center; }
+  .rc-footer-inner { justify-content: center; gap: 22px; }
+  .rc-footer-brand { align-items: center; text-align: center; }
+  .rc-socials { justify-content: center; }
+  .rc-footer-links { flex-direction: column; gap: 10px; }
+  .rc-footer-links a { white-space: normal; text-align: center; }
+}
+
+/* === STICKY BOTTOM BAR === */
+.rc-sticky {
+  position: fixed; bottom: 0; left: 0; right: 0;
+  z-index: 90;
+  background: #1f2937;
+  color: #fff;
+  font-family: Montserrat, sans-serif;
+  box-shadow: 0 -4px 20px rgba(0,0,0,.35);
+}
+.rc-sticky-inner {
+  max-width: 1280px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: center;
+  gap: 14px; padding: 12px 16px;
+  text-align: center; flex-wrap: wrap;
+}
+.rc-sticky p { margin: 0; font-size: 14px; }
+.rc-sticky a {
+  background: #4ade80; color: #111827;
+  padding: 8px 18px; border-radius: 6px;
+  font-weight: 400; font-size: 13px;
+  text-decoration: none;
+  transition: background .25s;
+}
+.rc-sticky a:hover { background: #fff; }
+
+@media (max-width: 640px) {
+  .rc-sticky-inner { flex-direction: column; gap: 8px; padding: 10px 16px; }
+  .rc-sticky p { font-size: 13px; }
+}
+
+
+    /* === FONT VERIFICATION === */
+    body, p, a, button, span, li, label { font-family: Montserrat, sans-serif; }
+    h1, h2, h3, h4, h5, h6 { font-family: Georgia, serif; }
+
+    body { background: #f3f6fa; color: #111827; }
+    html, body { max-width: 100%; overflow-x: hidden; }
+
+    main { padding-bottom: 70px; }
+    @media (max-width: 640px) { main { padding-bottom: 110px; } }
+  
+
+/* Ensure mobile toggle is always tappable */
+.rc-toggle { pointer-events: auto; position: relative; z-index: 2; }
+.rc-mobile-menu { position: relative; z-index: 1001; }
+.rc-nav { z-index: 1100 !important; }
+
+  </style>
+</head>
+
+<body>
+
+
+<!-- ════════════════════════ NAVIGATION ════════════════════════ -->
+<nav class="rc-nav">
+  <div class="rc-nav-inner">
+    <a href="index.html" class="rc-logo">
+      <img src="logomob.png" alt="Repaired Collective Logo" />
+    </a>
+
+    <div class="rc-menu">
+      <a href="index.html" class="">Home</a>
+      <a href="aboutus.html" class="">About</a>
+      <a href="review.html" class="active">Reviews</a>
+      <a href="tel:9178104109">917.810.4109</a>
+    </div>
+
+    <div class="rc-actions">
+      <a class="rc-btn" href="https://book.squareup.com/appointments/4002be65-c2c9-44bf-b20c-68772df3a332/location/QX3NKSH1A88VB/services">Book Now</a>
+      <a class="rc-btn" href="review.html">Leave a Review</a>
+      <button class="rc-toggle" id="rcToggle" aria-label="Open menu" type="button">☰</button>
+    </div>
+  </div>
+
+  <div class="rc-mobile-menu" id="rcMobileMenu">
+    <a href="index.html">Home</a>
+    <a href="aboutus.html">About</a>
+    <a href="review.html">Reviews</a>
+    <a href="tel:9178104109">917.810.4109</a>
+    <a href="https://book.squareup.com/appointments/4002be65-c2c9-44bf-b20c-68772df3a332/location/QX3NKSH1A88VB/services">Book Now</a>
+  </div>
+</nav>
+<div class="rc-nav-spacer"></div>
+
+
+  <main>
+    <!-- REVIEW SECTION -->
+    <section id="review" class="bg-[#f3f6fa] px-4 sm:px-6 py-12 sm:py-16 lg:py-20">
+      <div class="max-w-[760px] mx-auto rounded-2xl border border-[#e5e7eb] bg-white px-6 sm:px-8 lg:px-9 py-10 sm:py-11 text-center" style="box-shadow: 0 20px 60px rgba(15,23,42,.08);">
+        <h1 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-black leading-[1.05] text-[#172027] mb-4 sm:mb-5">
+          Leave a Review
+        </h1>
+        <p class="mx-auto mb-7 sm:mb-8 max-w-[590px] text-sm sm:text-base lg:text-lg leading-relaxed text-[#5b6470]">
+          We value your feedback. Please consider leaving a review on Google to help us improve our service and support more customers across NYC.
+        </p>
+        <div class="flex flex-col sm:flex-row flex-wrap justify-center gap-3 sm:gap-4">
+          <a class="inline-flex items-center justify-center rounded-lg bg-[#d00000] px-6 py-3.5 sm:py-4 text-sm sm:text-base font-extrabold text-white hover:-translate-y-0.5 transition-all sm:min-w-[230px]"
+            style="box-shadow: 0 10px 25px rgba(208,0,0,.25);"
+            href="https://g.page/r/CQOd2O7dTTDXEAg/review" target="_blank" rel="noopener">
+<span class="big-emoji">😊</span>
+
+<style>
+.big-emoji {
+  font-size: 70px;   /* adjust size */
+  color: white;       /* black & white */
+  line-height: 1;
+}
+</style>          </a>
+          <a class="inline-flex items-center justify-center rounded-lg bg-[#172027] px-6 py-3.5 sm:py-4 text-sm sm:text-base font-extrabold text-white hover:-translate-y-0.5 transition-all sm:min-w-[230px]"
+            href="https://docs.google.com/forms/d/e/1FAIpQLSdE-h-1bc0jpGAb6E-pCfUJk4wUSdj6oitraJdDLfKqcS2I4w/viewform" target="_blank" rel="noopener">
+<span class="big-emoji">😔</span>
+
+<style>
+.big-emoji {
+  font-size: 35px;   /* adjust size */
+  color: white;       /* black & white */
+  line-height: 1;
+}
+</style>          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12 lg:py-14">
+      <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start">
+        <div>
+          <div class="text-xs sm:text-sm font-extrabold uppercase tracking-[0.18em] text-[#c90000] mb-4 sm:mb-5">
+            Need Immediate Help?
+          </div>
+          <h2 class="font-serif text-2xl sm:text-3xl font-bold text-[#111827] mb-4 sm:mb-5 leading-tight">
+            Dispatch Is Ready Now
+          </h2>
+          <p class="mb-7 max-w-[590px] text-sm sm:text-base leading-relaxed text-[#596270]">
+            Our team is active 7 days a week, 8:00 AM – 10:00 PM. A technician can be at your NYC location within 90 minutes.
+          </p>
+          <div class="flex items-center gap-3 text-sm sm:text-base font-extrabold text-[#178447]">
+            <span class="inline-block h-3 w-3 rounded-full bg-[#70d49b] animate-pulse"></span>
+            Technicians available now in your area
+          </div>
+        </div>
+
+        <div class="rounded-2xl p-6 sm:p-8 lg:p-10 text-white overflow-hidden" style="background: linear-gradient(135deg, #172027, #172027 72%, #3a1720);">
+          <h3 class="font-serif text-xl sm:text-2xl font-bold mb-5 sm:mb-6">Get in Touch</h3>
+          <a class="mb-3 sm:mb-4 flex w-full items-center gap-4 rounded-xl border border-white/10 bg-white/10 hover:bg-white/15 transition-colors p-4 text-sm sm:text-base font-extrabold text-white"
+            href="tel:9178104109">
+            <i class="fa-solid fa-phone text-base"></i>
+            <span>917.810.4109</span>
+          </a>
+          <a class="mb-3 sm:mb-4 flex w-full items-center gap-4 rounded-xl border border-[#d00000] bg-[#d00000] hover:bg-[#b60000] transition-colors p-4 text-sm sm:text-base font-extrabold text-white"
+            href="https://book.squareup.com/appointments/4002be65-c2c9-44bf-b20c-68772df3a332/location/QX3NKSH1A88VB/services">
+            <i class="fa-solid fa-calendar text-base"></i>
+            <span>Schedule Online Now</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+
+<!-- ════════════════════════ FOOTER ════════════════════════ -->
+<footer class="rc-footer">
+  <div class="rc-footer-inner">
+    <div class="rc-footer-brand">
+      <span class="name">Repaired Collective</span>
+      <p>Copyright © 2026 Repaired.<br />Powered by Repaired⚡️Collective</p>
+    </div>
+    <nav class="rc-footer-links" aria-label="Site pages">
+      <a href="index.html">Home</a>
+      <a href="aboutus.html">About Us</a>
+      <a href="review.html">Reviews</a>
+      <a href="index.html#how-it-works">How It Works</a>
+      <a href="index.html#services">Repair Services</a>
+      <a href="index.html#reviews">Verified Reviews</a>
+      <a href="index.html#pricing">Repair Pricing</a>
+      <a href="index.html#contact">Contact &amp; Booking</a>
+    </nav>
+    <div class="rc-socials">
+      <a href="mailto:repairedcollective@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+      <a href="tel:9178104109" aria-label="Phone"><i class="fa-solid fa-phone"></i></a>
+      <a href="https://www.instagram.com/repairedcollective" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+      <a href="https://www.facebook.com/repairedcollectivenyc" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+      <a href="https://x.com/repairedcollect" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+      <a href="https://www.youtube.com/@repairedcollective" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+    </div>
+  </div>
+</footer>
+
+
+<!-- Sticky Bottom Notification Bar -->
+<div class="rc-sticky">
+  <div class="rc-sticky-inner">
+    <p>Your devices deserve a second life, we help them find a new home.</p>
+    <a href="https://metrocycle.org/" target="_self">Learn about MetroCycle!</a>
+  </div>
+</div>
+
+
+  <script>
+
+// === Shared nav toggle (bulletproof mobile menu) ===
+function rcInitNav() {
+  var t = document.getElementById('rcToggle');
+  var m = document.getElementById('rcMobileMenu');
+  if (!t || !m) return;
+
+  function toggle(e) {
+    if (e) { e.preventDefault(); e.stopPropagation(); }
+    m.classList.toggle('open');
+  }
+
+  t.addEventListener('click', toggle);
+
+  // Close on link click
+  m.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){ m.classList.remove('open'); });
+  });
+
+  // Close when clicking outside
+  document.addEventListener('click', function(e){
+    if (!m.classList.contains('open')) return;
+    if (m.contains(e.target) || t.contains(e.target)) return;
+    m.classList.remove('open');
+  });
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', rcInitNav);
+} else {
+  rcInitNav();
+}
+
+  </script>
+
+  <!--Start of Tawk.to Script-->
+  <script type="text/javascript">
+    var Tawk_API = Tawk_API || {};
+    var Tawk_LoadStart = new Date();
+    (function () {
+      var s1 = document.createElement('script'),
+        s0 = document.getElementsByTagName('script')[0];
+      s1.async = true;
+      s1.src = 'https://embed.tawk.to/6088185662662a09efc29c64/1f49pu4ij';
+      s1.charset = 'UTF-8';
+      s1.setAttribute('crossorigin', '*');
+      s0.parentNode.insertBefore(s1, s0);
+    })();
+  </script>
+
+  <script>
+  const stickyBar = document.querySelector('.rc-sticky');
+  const footer = document.querySelector('.rc-footer');
+
+  window.addEventListener('scroll', () => {
+    const footerTop = footer.getBoundingClientRect().top;
+    const screenHeight = window.innerHeight;
+
+    if (footerTop < screenHeight) {
+      stickyBar.style.display = 'none';
+    } else {
+      stickyBar.style.display = 'block';
+    }
+  });
+</script>
+</body>
+</html>
